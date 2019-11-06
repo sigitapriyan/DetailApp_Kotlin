@@ -10,6 +10,11 @@ import android.widget.ImageView
 import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_detail_merk.*
 import kotlinx.android.synthetic.main.activity_main.*
+import androidx.core.app.ComponentActivity.ExtraData
+import androidx.core.content.ContextCompat.getSystemService
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+
+
 
 class DetailMerk : AppCompatActivity(), View.OnClickListener {
 
@@ -24,7 +29,6 @@ class DetailMerk : AppCompatActivity(), View.OnClickListener {
         val extras = intent.extras
         val b = extras!!.getByteArray("EXTRA_IMG")
         val bmp = BitmapFactory.decodeByteArray(b, 0, b!!.size)
-
 
         val name = intent.getStringExtra("EXTRA_NAME")
         val desc = intent.getStringExtra("EXTRA_DESC")

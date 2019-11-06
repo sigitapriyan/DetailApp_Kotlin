@@ -1,18 +1,13 @@
 package com.sigit.finalapp
 
 import android.content.Intent
-import android.content.res.Resources
 import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.ImageView
 import androidx.appcompat.app.ActionBar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.activity_detail_merk.*
 import kotlinx.android.synthetic.main.item_row_merk.*
 import java.io.ByteArrayOutputStream
 import java.util.ArrayList
@@ -49,7 +44,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
                 val b = (img_item_merk.drawable as BitmapDrawable).bitmap;
                 val stream = ByteArrayOutputStream()
-                b.compress(Bitmap.CompressFormat.PNG, 100, stream)
+                b.compress(Bitmap.CompressFormat.PNG, 0, stream)
                 val iniGambar = stream.toByteArray()
 
 
