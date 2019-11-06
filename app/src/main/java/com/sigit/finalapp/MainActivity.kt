@@ -16,6 +16,9 @@ import kotlinx.android.synthetic.main.activity_detail_merk.*
 import kotlinx.android.synthetic.main.item_row_merk.*
 import java.io.ByteArrayOutputStream
 import java.util.ArrayList
+import android.graphics.drawable.BitmapDrawable
+
+
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var rvMerk: RecyclerView
@@ -41,29 +44,25 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         listMerkAdapter.setOnItemClickCallback(object : ListMerkAdapter.OnItemClickCallback {
             override fun onItemClicked(data: Merk) {
-                showSelectedMerk(data)
+                val iniMerk = tv_item_merk.text.toString()
+                val inidetailMerk = tv_item_detail.text.toString()
+
+                val b = (img_item_merk.drawable as BitmapDrawable).bitmap;
+                val stream = ByteArrayOutputStream()
+                b.compress(Bitmap.CompressFormat.PNG, 100, stream)
+                val iniGambar = stream.toByteArray()
+
+
+                val moveIntent = Intent(this@MainActivity, DetailMerk::class.java)
+                moveIntent.putExtra("EXTRA_NAME", iniMerk)
+                moveIntent.putExtra("EXTRA_DESC", inidetailMerk)
+                moveIntent.putExtra("EXTRA_IMG", iniGambar)
+                startActivity(moveIntent)
             }
         })
 
     }
 
-    private fun showSelectedMerk(merk: Merk) {
-        val iniMerk = tv_item_merk.text.toString()
-        val inidetailMerk = tv_item_detail.text.toString()
-
-        val iniGambar = BitmapFactory.decodeResource(resources, img_item_merk.id)
-        val stream = ByteArrayOutputStream()
-        iniGambar.compress(Bitmap.CompressFormat.PNG, 100, stream)
-        val b = stream.toByteArray()
-
-
-        val moveIntent = Intent(this@MainActivity, DetailMerk::class.java)
-        moveIntent.putExtra("EXTRA_NAME", iniMerk)
-        moveIntent.putExtra("EXTRA_DESC", inidetailMerk)
-        moveIntent.putExtra("EXTRA_IMG", b)
-        startActivity(moveIntent)
-
-    }
 
 
     private fun setActionBarTitle(title: String) {
