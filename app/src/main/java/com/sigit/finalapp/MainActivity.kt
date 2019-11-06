@@ -7,6 +7,8 @@ import android.view.View
 import androidx.appcompat.app.ActionBar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.activity_detail_merk.*
+import kotlinx.android.synthetic.main.item_row_merk.*
 import java.util.ArrayList
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
@@ -40,7 +42,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun showSelectedMerk(merk: Merk) {
+        val iniMerk = tv_item_merk.text.toString()
+        val inidetailMerk = tv_item_detail.text.toString()
+
         val moveIntent = Intent(this@MainActivity, DetailMerk::class.java)
+        moveIntent.putExtra("EXTRA_NAME", iniMerk)
+        moveIntent.putExtra("EXTRA_DESC", inidetailMerk)
         startActivity(moveIntent)
 
     }

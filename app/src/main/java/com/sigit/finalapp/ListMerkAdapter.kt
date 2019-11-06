@@ -47,7 +47,7 @@ class ListMerkAdapter(private val listMerk: ArrayList<Merk>) :
 
     inner class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var imgPhoto: ImageView = itemView.findViewById(R.id.img_item_photo)
-        var tvName: TextView = itemView.findViewById(R.id.tv_item_name)
+        var tvName: TextView = itemView.findViewById(R.id.tv_item_merk)
         var tvDetail: TextView = itemView.findViewById(R.id.tv_item_detail)
 
     }
