@@ -8,7 +8,7 @@
     android:padding="16dp">
 
     <ImageView
-        android:id="@+id/img_item_photo"
+        android:id="@+id/img_item_merk"
         android:layout_width="55dp"
         android:layout_height="55dp"
         android:src="@color/colorAccent"
@@ -18,7 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_toEndOf="@id/img_item_photo"
+        android:layout_toEndOf="@id/img_item_merk"
         android:orientation="vertical">
 
         <TextView
