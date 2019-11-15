@@ -36,7 +36,11 @@ class ListMerkAdapter(private val listMerk: ArrayList<Merk>) :
         holder.tvName.text = merk.name
         holder.tvDetail.text = merk.detail
 
-        holder.itemView.setOnClickListener { onItemClickCallback.onItemClicked(listMerk[holder.adapterPosition]) }
+        holder.itemView.setOnClickListener {
+            val detailMerk = Intent(it.context, DetailMerk::class.java)
+            detailMerk.putExtra(DetailMerk.EXTRA_ITEM, listMerk[holder.adapterPosition])
+            it.context.startActivity(detailMerk)
+        }
     }
 
 

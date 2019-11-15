@@ -26,21 +26,20 @@ class DetailMerk : AppCompatActivity(), View.OnClickListener {
         val tvDetailMerk = findViewById<TextView>(R.id.tvDetailMerk)
         val imgMerk = findViewById<ImageView>(R.id.imgMerk)
 
-        val extras = intent.extras
-        val b = extras!!.getByteArray("EXTRA_IMG")
-        val bmp = BitmapFactory.decodeByteArray(b, 0, b!!.size)
+        val namebrand = intent.getParcelableExtra<Merk>(EXTRA_ITEM)
 
-        val name = intent.getStringExtra("EXTRA_NAME")
-        val desc = intent.getStringExtra("EXTRA_DESC")
-
-        tvNamaMerk.text = name
-        tvDetailMerk.text = desc
-        imgMerk.setImageBitmap(bmp)
+        tvNamaMerk.text = namebrand.name
+        tvDetailMerk.text = namebrand.detail
+        imgMerk.setImageResource(namebrand.photo)
     }
 
 
     override fun onClick(v: View) {
         val moveIntent = Intent(this@DetailMerk, MainActivity::class.java)
         startActivity(moveIntent)
+    }
+
+    companion object {
+        const val EXTRA_ITEM = "extra_item"
     }
 }
